@@ -16,7 +16,7 @@ class AuthorizationRequest implements Contract
 
     public function __construct()
     {
-        $this->merchantTransactionId = uniqid();
+        $this->merchantTransactionId = Uuid::uuid4();
         $this->password = config('ecommerce.password');
         $this->merchantAccountNo = config('ecommerce.merchant_account_no');
         $this->paymentWindowUrl = config('ecommerce.payment_window_url');
