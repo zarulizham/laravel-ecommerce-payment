@@ -2,12 +2,11 @@
 
 namespace ZarulIzham\EcommercePayment\Http\Requests;
 
-use ZarulIzham\EcommercePayment\Messages\AuthorizationConfirmation as AuthorizationConfirmationMessage;
 use Illuminate\Foundation\Http\FormRequest;
+use ZarulIzham\EcommercePayment\Messages\AuthorizationConfirmation as AuthorizationConfirmationMessage;
 
 class AuthorizationConfirmation extends FormRequest
 {
-
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -28,7 +27,6 @@ class AuthorizationConfirmation extends FormRequest
         return [];
     }
 
-
     /**
      * Presist the data to the users table
      */
@@ -36,6 +34,6 @@ class AuthorizationConfirmation extends FormRequest
     {
         $data = $this->all();
 
-        return (new AuthorizationConfirmationMessage)->handle($data);
+        return (new AuthorizationConfirmationMessage())->handle($data);
     }
 }

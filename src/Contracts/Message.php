@@ -2,10 +2,8 @@
 
 namespace ZarulIzham\EcommercePayment\Contracts;
 
-
 interface Message
 {
-
     /**
      * handle a message
      *

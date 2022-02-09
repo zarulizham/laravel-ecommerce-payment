@@ -8,7 +8,6 @@ use ZarulIzham\EcommercePayment\Messages\AuthorizationRequest;
 
 class PaymentController extends Controller
 {
-
     /**
      * Initiate the request authorization message to FPX
      *
@@ -18,7 +17,7 @@ class PaymentController extends Controller
     public function handle(Request $request)
     {
         return view('ecommerce-payment::redirect_to_bpg', [
-            'request' => (new AuthorizationRequest)->handle($request->all()),
+            'request' => (new AuthorizationRequest())->handle($request->all()),
         ]);
     }
 }

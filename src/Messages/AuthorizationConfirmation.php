@@ -3,8 +3,8 @@
 namespace ZarulIzham\EcommercePayment\Messages;
 
 use Ramsey\Uuid\Uuid;
-use ZarulIzham\EcommercePayment\Models\EcommerceTransaction;
 use ZarulIzham\EcommercePayment\Contracts\Message as Contract;
+use ZarulIzham\EcommercePayment\Models\EcommerceTransaction;
 
 class AuthorizationConfirmation implements Contract
 {
@@ -24,6 +24,7 @@ class AuthorizationConfirmation implements Contract
         $this->responseData = @$options;
 
         $this->saveTransaction();
+
         return $this;
     }
 

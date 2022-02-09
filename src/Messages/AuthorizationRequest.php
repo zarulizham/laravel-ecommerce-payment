@@ -2,12 +2,9 @@
 
 namespace ZarulIzham\EcommercePayment\Messages;
 
-use ZarulIzham\EcommercePayment\Contracts\Message as Contract;
-use ZarulIzham\EcommercePayment\Traits\VerifyCertificate;
-use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Validator;
 use Ramsey\Uuid\Uuid;
+use ZarulIzham\EcommercePayment\Contracts\Message as Contract;
 use ZarulIzham\EcommercePayment\Models\EcommerceTransaction;
 
 class AuthorizationRequest implements Contract
@@ -64,7 +61,6 @@ class AuthorizationRequest implements Contract
         return $this;
     }
 
-
     /**
      * Format data for checksum
      * @return string
@@ -89,8 +85,7 @@ class AuthorizationRequest implements Contract
      */
     public function saveTransaction()
     {
-
-        $transaction = new EcommerceTransaction;
+        $transaction = new EcommerceTransaction();
         $transaction->unique_id = Uuid::uuid4();
         $transaction->reference_id = $this->reference_id;
         $transaction->transaction_id = $this->merchantTransactionId;
@@ -101,7 +96,7 @@ class AuthorizationRequest implements Contract
     public function signMessage($data)
     {
         $allowedParams = [
-            'MERCHANT_ACC_NO', 'MERCHANT_TRANID', 'AMOUNT', 'TRANSACTION_TYPE', 'SECURE_SIGNATURE', 'RESPONSE_TYPE', 'TXN_URL', 'RETURN_URL', 'TXN_DESC', 'CUSTOMER_ID', 'FR_HIGHRISK_EMAIL', 'FR_HIGHRISK_COUNTRY', 'FR_BILLING_ADDRESS', 'FR_SHIPPING_ADDRESS', 'FR_SHIPPING_COST', 'FR_PURCHASE_HOUR', 'CUSTOMER_IP', 'PYMT_IND', 'PYMT_CRITERIA'
+            'MERCHANT_ACC_NO', 'MERCHANT_TRANID', 'AMOUNT', 'TRANSACTION_TYPE', 'SECURE_SIGNATURE', 'RESPONSE_TYPE', 'TXN_URL', 'RETURN_URL', 'TXN_DESC', 'CUSTOMER_ID', 'FR_HIGHRISK_EMAIL', 'FR_HIGHRISK_COUNTRY', 'FR_BILLING_ADDRESS', 'FR_SHIPPING_ADDRESS', 'FR_SHIPPING_COST', 'FR_PURCHASE_HOUR', 'CUSTOMER_IP', 'PYMT_IND', 'PYMT_CRITERIA',
         ];
 
         $this->dataToSign = array_merge($data, [
