@@ -23,7 +23,6 @@ class EcommercePaymentServiceProvider extends PackageServiceProvider
             ->hasMigration('create_ecommerce_transactions_table')
             ->hasCommand(EcommercePaymentCommand::class);
 
-        // dd("{$this->package->shortName()}");
         $this->publishes([
             $this->package->basePath('/../stubs/Controller.php') => app_path("Http/Controllers/Ecommerce/Controller.php"),
         ], "{$this->package->shortName()}-controller");

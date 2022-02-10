@@ -63,7 +63,7 @@ ECOMMERCE_CALLBACK_URL="${APP_URL}/BPG/ecommerce/callback"
 Optionally, you can publish the views using
 
 ```bash
-php artisan vendor:publish --tag="laravel-card-ecommerce-views"
+php artisan vendor:publish --tag="ecommerce-payment-views"
 ```
 
 ## Usage
