@@ -36,7 +36,7 @@ class EcommercePayment
 
         $xml = simplexml_load_string($response->body());
         $json = json_encode($xml);
-        $array = json_decode($json, TRUE);
+        $array = json_decode($json, true);
 
         $array = self::array_change_key_case_recursive($array);
         $transaction = $array['transaction'];
@@ -49,8 +49,10 @@ class EcommercePayment
     protected function array_change_key_case_recursive($arr)
     {
         return array_map(function ($item) {
-            if (is_array($item))
+            if (is_array($item)) {
                 $item = self::array_change_key_case_recursive($item);
+            }
+
             return $item;
         }, array_change_key_case($arr));
     }
@@ -59,6 +61,7 @@ class EcommercePayment
     {
         ksort($data);
         $message = config('ecommerce.password') .  implode('', array_values($data));
+
         return hash('sha512', $message);
     }
 }
