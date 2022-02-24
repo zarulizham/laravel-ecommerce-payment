@@ -56,9 +56,9 @@ class AuthorizationConfirmation implements Contract
     {
         $transaction = EcommerceTransaction::where(['transaction_id' => $this->merchantTransactionId])->firstOrNew();
 
-        $transaction->unique_id = $transaction->unique_id ?? Uuid::uuid4();
         $transaction->response_code = $this->responseCode;
         $transaction->response_description = $this->responseDescription;
+        $transaction->amount = $this->amount;
         $transaction->response_payload = $this->list();
         $transaction->save();
 

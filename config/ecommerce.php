@@ -10,4 +10,5 @@ return [
     'callback_url' => env('ECOMMERCE_CALLBACK_URL'),
     'transaction_type' => env('ECOMMERCE_TRANSACTION_TYPE', 2),
     'response_type' => env('ECOMMERCE_RESPONSE_TYPE', 'HTTP'),
+    'query_url' => env('ECOMMERCE_QUERY_URL'),
 ];

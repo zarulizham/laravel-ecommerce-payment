@@ -86,9 +86,9 @@ class AuthorizationRequest implements Contract
     public function saveTransaction()
     {
         $transaction = new EcommerceTransaction();
-        $transaction->unique_id = Uuid::uuid4();
         $transaction->reference_id = $this->reference_id;
         $transaction->transaction_id = $this->merchantTransactionId;
+        $transaction->amount = $this->amount;
         $transaction->request_payload = $this->list();
         $transaction->save();
     }

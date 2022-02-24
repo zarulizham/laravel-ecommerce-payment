@@ -11,6 +11,6 @@ class EcommercePayment extends Facade
 {
     protected static function getFacadeAccessor()
     {
-        return 'laravel-ecommerce-payment';
+        return \ZarulIzham\EcommercePayment\EcommercePayment::class;
     }
 }
