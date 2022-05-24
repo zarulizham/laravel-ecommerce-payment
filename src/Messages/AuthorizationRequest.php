@@ -16,7 +16,6 @@ class AuthorizationRequest implements Contract
 
     public function __construct()
     {
-        $this->merchantTransactionId = Uuid::uuid4();
         $this->password = config('ecommerce.password');
         $this->merchantAccountNo = config('ecommerce.merchant_account_no');
         $this->paymentWindowUrl = config('ecommerce.payment_window_url');
@@ -87,7 +86,7 @@ class AuthorizationRequest implements Contract
     {
         $transaction = new EcommerceTransaction();
         $transaction->reference_id = $this->reference_id;
-        $transaction->transaction_id = $this->merchantTransactionId;
+        $transaction->transaction_id = $this->reference_id;
         $transaction->amount = $this->amount;
         $transaction->request_payload = $this->list();
         $transaction->save();
@@ -102,7 +101,7 @@ class AuthorizationRequest implements Contract
         $this->dataToSign = array_merge($data, [
             'AMOUNT' => $this->amount,
             'MERCHANT_ACC_NO' => $this->merchantAccountNo,
-            'MERCHANT_TRANID' => $this->merchantTransactionId,
+            'MERCHANT_TRANID' => $this->reference_id,
             'RESPONSE_TYPE' => $this->responseType,
             'RETURN_URL' => $this->directUrl,
             'TRANSACTION_TYPE' => $this->transactionType,
