@@ -3,7 +3,6 @@
 namespace ZarulIzham\EcommercePayment\Messages;
 
 use Illuminate\Support\Facades\Validator;
-use Ramsey\Uuid\Uuid;
 use ZarulIzham\EcommercePayment\Contracts\Message as Contract;
 use ZarulIzham\EcommercePayment\Models\EcommerceTransaction;
 
